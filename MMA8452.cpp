@@ -491,6 +491,90 @@ void MMA8452::debugRegister(char reg) {
          MMA8452_DBG(" 1  FREAD: %d",      (v&0x02)>>1);
          MMA8452_DBG(" 0  ACTIVE: %d",     (v&0x01));
       break;
+
+      case MMA8452_CTRL_REG_2:
+         MMA8452_DBG("CTRL_REG_2 has value: 0x%x",v);
+         MMA8452_DBG(" 7  ST: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6  RST: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5  0: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4  SMODS1: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3  SMODS0: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2  SLPE: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1  MODS1: %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0  MODS0: %d",     (v&0x01));
+      break;
+
+      case MMA8452_CTRL_REG_5:
+         MMA8452_DBG("CTRL_REG_5 has value: 0x%x",v);
+         MMA8452_DBG(" 7  INT_CFG_ASLP: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6  INT_CFG_FIFO: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5  INT_CFG_TRANS: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4  INT_CFG_LNDPRT: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3  INT_CFG_PULSE: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2  INT_CFG_FF_MT: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1  : %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0  INT_CFG_DRDY: %d",     (v&0x01));
+      break;
+
+      case MMA8452_CTRL_REG_4:
+         MMA8452_DBG("CTRL_REG_4 has value: 0x%x",v);
+         MMA8452_DBG(" 7  INT_EN_ASLP: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6  INT_EN_FIFO: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5  INT_EN_TRANS: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4  INT_EN_LNDPRT: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3  INT_EN_PULSE: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2  INT_EN_FF_MT: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1  : %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0  INT_EN_DRDY: %d",     (v&0x01));
+      break;
+
+      case MMA8452_CTRL_REG_3:
+         MMA8452_DBG("CTRL_REG_3 has value: 0x%x",v);
+         MMA8452_DBG(" 7  : %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6  WAKE_TRANS: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5  WAKE_LNDPRT: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4  WAKE_PULSE: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3  WAKE_FF_MT: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2  : %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1  IPOL: %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0  PP_OD: %d",     (v&0x01));
+      break;
+
+      case MMA8452_ASLP_COUNT:
+      MMA8452_DBG("ASLP_COUNT has value: 0x%x",v);
+         MMA8452_DBG(" 7: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1: %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0: %d",     (v&0x01));
+      break;   
+
+      case MMA8452_INT_SOURCE:
+         MMA8452_DBG("INT_SOURCE has value: 0x%x",v);
+         MMA8452_DBG(" 7  SRC_ASLP: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6  : %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5  SRC_TRANS: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4  SRC_LNDPRT: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3  SRC_PULSE: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2  SRC_FF_MT: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1  : %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0  SRC_DRDY: %d",     (v&0x01));
+      break; 
+
+      case MMA8452_SYSMOD:
+      MMA8452_DBG("SYSMOD has value: 0x%x",v);
+         MMA8452_DBG(" 7: %d",(v&0x80)>>7);
+         MMA8452_DBG(" 6: %d",(v&0x40)>>6);
+         MMA8452_DBG(" 5: %d",        (v&0x20)>>5);
+         MMA8452_DBG(" 4: %d",        (v&0x10)>>4);
+         MMA8452_DBG(" 3: %d",        (v&0x08)>>3);
+         MMA8452_DBG(" 2: %d",     (v&0x04)>>2);
+         MMA8452_DBG(" 1: %d",      (v&0x02)>>1);
+         MMA8452_DBG(" 0: %d",     (v&0x01));
+      break;      
         
       case MMA8452_XYZ_DATA_CFG:
          MMA8452_DBG("XYZ_DATA_CFG has value: 0x%x",v);

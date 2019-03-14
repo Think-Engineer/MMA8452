@@ -47,6 +47,7 @@
 #define MMA8452_XYZ_DATA_CFG 0x0E
 
 #define MMA8452_SYSMOD 0x0B        // Type 'read' : This tells you if device is active, sleep or standy 0x00=STANDBY 0x01=WAKE 0x02=SLEEP
+#define MMA8452_INT_SOURCE 0x0C    // Type 'read': Check to see if interrupt bits are asserted
 #define MMA8452_WHO_AM_I 0x0D      // Type 'read' : This should return the device id of 0x2A
 
 #define MMA8452_PL_STATUS 0x10     // Type 'read' : This shows portrait landscape mode orientation
@@ -307,7 +308,6 @@ class MMA8452 {
       void debugRegister(char reg);
       #endif
    
-    private:
       /**
        * Reads the specified register, applies the mask with logical AND, logical ORs the value
        * and writes back the result to the register. If toggleActivation is set to true then the
@@ -316,6 +316,9 @@ class MMA8452 {
        * standby.
        */
       int maskAndApplyRegister(char reg, char mask, char value, int toggleActivation);
+
+    private:
+      
       
       /// Reads the specified register, applies the mask with logical AND, and writes the result back.
       int logicalANDRegister(char addr, char mask);
